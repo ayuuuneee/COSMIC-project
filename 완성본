@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+int main(void) {
+    int choice1, choice2, replay;
+    char answer[10];
+
+    srand((unsigned)time(NULL));
+
+    do {
+        choice2 = rand() % 3;
+
+        printf("청개구리 가위바위보를 시작합니다\n");
+        printf("가위(0), 바위(1), 보(2) 중 하나를 입력해주세요: ");
+        scanf("%d", &choice1);
+
+        switch (choice2) {
+        case 0:
+            printf("상대는 [가위]를 냈습니다: ");
+            break;
+        case 1:
+            printf("상대는 [바위]를 냈습니다: ");
+            break;
+        case 2:
+            printf("상대는 [보]를 냈습니다: ");
+            break;
+        }
+
+        scanf("%s", answer);
+
+        if ((choice1 == 2 && choice2 == 0) || (choice1 == 1 && choice2 == 2) || (choice1 == 0 && choice2 == 1)) {
+            if (strcmp(answer, "이겼다") == 0) {
+                printf("게임에서 승리하셨습니다.\n");
+            }
+            else {
+                printf("게임에서 패배하셨습니다.\n");
+            }
+        }
+
+        else if (choice1 == choice2) {
+            if (strcmp(answer, "개굴") == 0) {
+                printf("게임에서 승리하셨습니다.\n");
+            }
+            else {
+                printf("게임에서 패배하셨습니다.\n");
+            }
+        }
+        else {
+            if (strcmp(answer, "졌다") == 0) {
+                printf("게임에서 승리하셨습니다.\n");
+            }
+            else {
+                printf("게임에서 패배하셨습니다.\n");
+            }
+        }
+
+        printf("다시 게임 하기를 원하시면 1 아니면 2를 눌러주세요: ");
+        scanf("%d", &replay);
+    } while (replay == 1);
+
+    if (replay == 2)
+        printf("게임을 종료합니다.\n");
+    else
+        printf("잘못된 입력입니다.\n");
+    return 0;
+}
